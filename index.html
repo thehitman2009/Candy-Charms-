@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="top">
+        <h1>Candy Charms Emporium</h1>
+    </div>
+    <div id="sign-in">
+        <h1>Make account</h1>
+        <input type="text" placeholder="username" id="username"><br>
+        <input type="text" placeholder="password" id="password"><br>
+        <button id="sub">Submit</button>
+    </div>
+    <div id="if-user-signed">
+        <div id="about-page">
+            <h3>
+                Welcome to Hudson, Henry and Jack's candy shop where we sell a veriety of goods ranging from drinks like
+                prime
+                and gatorade
+                to candies and chips. Drinks are 3 dollars and king size candies are 2, with smaller candies being are 1
+                dollar
+                to 25 cents.
+            </h3>
+        </div>
+        <div id="make-order">
+            <a href="./order.html">Make a order</a>
+        </div>
+    </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+        body {
+            background-color: rgb(241, 134, 197);
+            color: rgb(255, 255, 255);
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        #top {
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            border-bottom: black 2px solid;
+        }
+
+        #about-page {
+            width: 80%;
+            height: auto;
+            margin-left: 10%;
+            border: solid black 2px;
+            margin-top: 5%;
+            text-align: center;
+        }
+
+        #make-order {
+            width: 10%;
+            height: auto;
+            text-align: center;
+            margin-left: 45%;
+            margin-top: 5%;
+        }
+        #sign-in {
+            width: 50%;
+            margin-left: 25%;
+        }
+    </style>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+        import { getDatabase, get, ref, set, push } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCGDIJVor-7iSXPbnfKxJ1uQ0T_mimdFl4",
+            authDomain: "code-for-bequem.firebaseapp.com",
+            databaseURL: "https://code-for-bequem-default-rtdb.firebaseio.com",
+            projectId: "code-for-bequem",
+            storageBucket: "code-for-bequem.appspot.com",
+            messagingSenderId: "142097273551",
+            appId: "1:142097273551:web:bbfd43f08d73e2994d1dba",
+            measurementId: "G-8MPBZ83K6L"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+        const dbref = ref(db, "cards/");
+        var signin = document.getElementById("sign-in");
+        var ifusersigned = document.getElementById("if-user-signed");
+        if(window.localStorage.getItem("ui") == undefined) {
+            signin.style.display = "block";
+            ifusersigned.style.display = "none";
+        }
+        else {
+            signin.style.display = "none";
+            ifusersigned.style.display = "block";
+        }
+        
+    </script>
+</body>
+
+</html>
